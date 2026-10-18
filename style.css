@@ -429,3 +429,49 @@ button {
     display: none;
   }
 }
+
+/* Final greeting layout adjustments */
+.greeting-page {
+  justify-content: flex-end;
+  padding: clamp(1rem, 3vw, 3rem) clamp(1rem, 5vw, 5rem);
+}
+
+.wish-card {
+  width: min(44%, 600px);
+  padding: clamp(1.2rem, 2.3vw, 2rem);
+}
+
+.typed-message {
+  min-height: 0;
+}
+
+.typed-line {
+  min-height: 1.4em;
+}
+
+.salutation {
+  font-size: clamp(2rem, 3vw, 2.8rem);
+}
+
+.blessing {
+  font-size: clamp(1rem, 1.3vw, 1.2rem);
+  line-height: 1.5;
+}
+
+.signoff {
+  margin-top: 0.8rem;
+  font-size: clamp(1.6rem, 2.2vw, 2.1rem);
+}
+
+.signature {
+  margin-top: 0.4rem;
+}
+
+@media (max-width: 650px) {
+  .wish-card {
+    width: 100%;
+    max-width: 540px;
+    padding: 1.2rem 1rem;
+  }
+}
+
