@@ -13,22 +13,43 @@
   const instagramUrl =
     "https://www.instagram.com/____.dag.____/?__pwa=1#";
 
- 
-function wishLines() {
-  return [
-    "Dear,",
-    "— ❀ —",
-    "May ma durga bless you with more than you deserve,",
-    "better than you expected, and sooner than you imagined.",
-    "shubho bijoya",
-    "yours Aditya Das Gupta",
-    "____.dag.____"
-  ];
-}
-
+  function wishLines() {
+    return [
+      "Dear,",
+      "— ❀ —",
+      "May ma durga bless you with more than you deserve,",
+      "better than you expected, and sooner than you imagined.",
+      "shubho bijoya",
+      "yours Aditya Das Gupta",
+      "____.dag.____"
+    ];
+  }
 
   const pause = (ms) =>
     new Promise((resolve) => window.setTimeout(resolve, ms));
+
+  function makeInstagramLink() {
+    const lastLine = lineEls[6];
+
+    if (!lastLine) return;
+
+    const text = lastLine.querySelector(".typed-text");
+    const cursor = lastLine.querySelector(".cursor");
+
+    if (!text) return;
+
+    text.replaceChildren();
+
+    const link = document.createElement("a");
+    link.href = instagramUrl;
+    link.textContent = "____.dag.____";
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+
+    text.appendChild(link);
+
+    if (cursor) cursor.classList.add("hidden");
+  }
 
   async function typeWish() {
     const lines = wishLines();
@@ -38,32 +59,37 @@ function wishLines() {
       const cursor = line.querySelector(".cursor");
 
       if (text) text.textContent = "";
-      if (cursor) cursor.classList.remove("hidden");
+      if (cursor) cursor.classList.add("hidden");
     });
 
     if (reducedMotion) {
       lineEls.forEach((line, index) => {
         const text = line.querySelector(".typed-text");
-        const cursor = line.querySelector(".cursor");
-
-        if (text) text.textContent = lines[index] || "";
-        if (cursor) cursor.classList.add("hidden");
+        if (text && index < 6) {
+          text.textContent = lines[index];
+        }
       });
 
       makeInstagramLink();
       return;
     }
 
-    for (let i = 0; i < lineEls.length; i++) {
+    for (let i = 0; i < Math.min(lines.length, lineEls.length); i++) {
       const line = lineEls[i];
       const text = line.querySelector(".typed-text");
       const cursor = line.querySelector(".cursor");
 
       if (!text || !cursor) continue;
 
-      const message = lines[i] || "";
+      // The Instagram handle becomes a clickable link after typing.
+      if (i === 6) {
+        makeInstagramLink();
+        continue;
+      }
 
-      for (const character of message) {
+      cursor.classList.remove("hidden");
+
+      for (const character of lines[i]) {
         text.textContent += character;
 
         await pause(
@@ -79,37 +105,14 @@ function wishLines() {
 
         if (nextCursor) nextCursor.classList.remove("hidden");
 
-        await pause(i === 2 ? 220 : 160);
+        await pause(i === 1 ? 220 : 160);
       }
     }
-
-    makeInstagramLink();
-  }
-
-  function makeInstagramLink() {
-    const lastLine = lineEls[lineEls.length - 1];
-
-    if (!lastLine) return;
-
-    const text = lastLine.querySelector(".typed-text");
-    if (!text) return;
-
-    text.replaceChildren();
-
-    const link = document.createElement("a");
-    link.href = instagramUrl;
-    link.textContent = "____.dag.____";
-    link.target = "_blank";
-    link.rel = "noopener noreferrer";
-    link.style.color = "inherit";
-    link.style.textDecoration = "underline";
-    link.style.textUnderlineOffset = "4px";
-
-    text.appendChild(link);
   }
 
   // Falling flower petals
   const petalLayer = document.getElementById("petalLayer");
+
   const flowerGlyphs = ["✿", "❀", "✽", "✾", "❁"];
 
   const petalColors = [
