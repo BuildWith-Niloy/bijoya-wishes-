@@ -13,18 +13,19 @@
   const instagramUrl =
     "https://www.instagram.com/____.dag.____/?__pwa=1#";
 
-  function wishLines() {
-    return [
-      "a little wish, made just for you",
-      "Dear,",
-      "— ❀ —",
-      "May ma durga bless you with more than you deserve,",
-      "better than you expected, and sooner than you imagined.",
-      "shubho bijoya",
-      "yours Aditya Das Gupta",
-      "____.dag.____"
-    ];
-  }
+ 
+function wishLines() {
+  return [
+    "Dear,",
+    "— ❀ —",
+    "May ma durga bless you with more than you deserve,",
+    "better than you expected, and sooner than you imagined.",
+    "shubho bijoya",
+    "yours Aditya Das Gupta",
+    "____.dag.____"
+  ];
+}
+
 
   const pause = (ms) =>
     new Promise((resolve) => window.setTimeout(resolve, ms));
