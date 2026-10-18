@@ -2,35 +2,31 @@
 (() => {
   "use strict";
 
-  const lineEls = Array.from(
-    document.querySelectorAll(".typed-line")
-  );
-
-  const reducedMotion = window.matchMedia(
-    "(prefers-reduced-motion: reduce)"
-  ).matches;
+  const lineEls = Array.from(document.querySelectorAll(".typed-line"));
+  const petalLayer = document.getElementById("petalLayer");
 
   const instagramUrl =
     "https://www.instagram.com/____.dag.____/?__pwa=1#";
 
-  function wishLines() {
-    return [
-      "Dear,",
-      "— ❀ —",
-      "May ma durga bless you with more than you deserve,",
-      "better than you expected, and sooner than you imagined.",
-      "shubho bijoya",
-      "yours Aditya Das Gupta",
-      "____.dag.____"
-    ];
-  }
+  const messages = [
+    "Dear,",
+    "— ❀ —",
+    "May ma durga bless you with more than you deserve,",
+    "better than you expected, and sooner than you imagined.",
+    "shubho bijoya",
+    "yours Aditya Das Gupta",
+    "____.dag.____"
+  ];
+
+  const reducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
 
   const pause = (ms) =>
     new Promise((resolve) => window.setTimeout(resolve, ms));
 
   function makeInstagramLink() {
     const lastLine = lineEls[6];
-
     if (!lastLine) return;
 
     const text = lastLine.querySelector(".typed-text");
@@ -38,35 +34,33 @@
 
     if (!text) return;
 
-    text.replaceChildren();
-
     const link = document.createElement("a");
     link.href = instagramUrl;
-    link.textContent = "____.dag.____";
+    link.textContent = messages[6];
     link.target = "_blank";
     link.rel = "noopener noreferrer";
+    link.setAttribute("aria-label", "Visit Instagram profile");
 
-    text.appendChild(link);
+    text.replaceChildren(link);
 
     if (cursor) cursor.classList.add("hidden");
   }
 
   async function typeWish() {
-    const lines = wishLines();
-
     lineEls.forEach((line) => {
       const text = line.querySelector(".typed-text");
       const cursor = line.querySelector(".cursor");
 
-      if (text) text.textContent = "";
+      if (text) text.replaceChildren();
       if (cursor) cursor.classList.add("hidden");
     });
 
     if (reducedMotion) {
       lineEls.forEach((line, index) => {
         const text = line.querySelector(".typed-text");
+
         if (text && index < 6) {
-          text.textContent = lines[index];
+          text.textContent = messages[index];
         }
       });
 
@@ -74,109 +68,89 @@
       return;
     }
 
-    for (let i = 0; i < Math.min(lines.length, lineEls.length); i++) {
+    for (let i = 0; i < 6; i++) {
       const line = lineEls[i];
+      if (!line) continue;
+
       const text = line.querySelector(".typed-text");
       const cursor = line.querySelector(".cursor");
 
       if (!text || !cursor) continue;
 
-      // The Instagram handle becomes a clickable link after typing.
-      if (i === 6) {
-        makeInstagramLink();
-        continue;
-      }
-
       cursor.classList.remove("hidden");
 
-      for (const character of lines[i]) {
+      for (const character of messages[i]) {
         text.textContent += character;
 
-        await pause(
-          character === "," || character === "." ? 105 : 25
-        );
+        const delay =
+          character === "," || character === "." ? 100 :
+          character === "—" ? 140 : 27;
+
+        await pause(delay);
       }
 
       cursor.classList.add("hidden");
 
       if (i + 1 < lineEls.length) {
-        const nextCursor =
-          lineEls[i + 1].querySelector(".cursor");
+        const nextCursor = lineEls[i + 1].querySelector(".cursor");
 
         if (nextCursor) nextCursor.classList.remove("hidden");
 
-        await pause(i === 1 ? 220 : 160);
+        await pause(i === 1 ? 300 : 180);
       }
     }
+
+    makeInstagramLink();
   }
 
-  // Falling flower petals
-  const petalLayer = document.getElementById("petalLayer");
+  function createPetals() {
+    if (!petalLayer || reducedMotion) return;
 
-  const flowerGlyphs = ["✿", "❀", "✽", "✾", "❁"];
+    const glyphs = ["❋", "✿", "❀", "❁"];
+    const colors = [
+      "#d94b2b",
+      "#ed783a",
+      "#f0a34a",
+      "#b93627",
+      "#f3c06c"
+    ];
 
-  const petalColors = [
-    "#a92e22",
-    "#cd633b",
-    "#d99a45",
-    "#f4dfb8",
-    "#ba4a31",
-    "#e5b85f"
-  ];
+    const count = window.innerWidth <= 650 ? 12 : 22;
 
-  const petalCount = reducedMotion
-    ? 0
-    : window.innerWidth < 650
-      ? 13
-      : 22;
-
-  if (petalLayer) {
-    for (let i = 0; i < petalCount; i++) {
+    for (let i = 0; i < count; i++) {
       const petal = document.createElement("span");
 
       petal.className = "petal";
+      petal.textContent = glyphs[i % glyphs.length];
       petal.setAttribute("aria-hidden", "true");
 
-      petal.textContent =
-        flowerGlyphs[
-          Math.floor(Math.random() * flowerGlyphs.length)
-        ];
-
       petal.style.left = `${Math.random() * 100}%`;
-
+      petal.style.fontSize = `${12 + Math.random() * 14}px`;
       petal.style.setProperty(
         "--petal-color",
-        petalColors[
-          Math.floor(Math.random() * petalColors.length)
-        ]
+        colors[i % colors.length]
       );
-
       petal.style.setProperty(
         "--duration",
-        `${9 + Math.random() * 12}s`
+        `${9 + Math.random() * 9}s`
       );
-
       petal.style.setProperty(
         "--delay",
         `${-Math.random() * 18}s`
       );
-
       petal.style.setProperty(
         "--drift",
-        `${-80 + Math.random() * 160}px`
+        `${Math.random() * 120 - 60}px`
       );
-
       petal.style.setProperty(
         "--petal-opacity",
-        `${0.28 + Math.random() * 0.45}`
+        `${0.35 + Math.random() * 0.4}`
       );
-
-      petal.style.fontSize =
-        `${13 + Math.random() * 17}px`;
 
       petalLayer.appendChild(petal);
     }
   }
 
+  createPetals();
   typeWish();
 })();
