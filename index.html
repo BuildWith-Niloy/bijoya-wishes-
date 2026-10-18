@@ -1,408 +1,67 @@
 
-:root {
-  --vermilion: #9d2b20;
-  --deep-red: #762019;
-  --ink: #762c21;
-  --gold: #bd7934;
-  --paper: rgba(255, 247, 224, 0.91);
-  --paper-edge: rgba(176, 93, 43, 0.35);
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8d9a9">
+  <meta name="description" content="A little Shubho Bijoya wish, made with love.">
+  <title>Shubho Bijoya 🌺</title>
 
-* {
-  box-sizing: border-box;
-}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
 
-html {
-  min-width: 320px;
-  min-height: 100%;
-}
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="greeting-page">
+    <div class="petal-layer" id="petalLayer" aria-hidden="true"></div>
 
-body {
-  margin: 0;
-  min-width: 320px;
-  min-height: 100vh;
-  color: var(--ink);
-  font-family: "Lora", Georgia, serif;
-}
+    <span class="corner-flower flower-one" aria-hidden="true">❀</span>
+    <span class="corner-flower flower-two" aria-hidden="true">✿</span>
+    <span class="corner-flower flower-three" aria-hidden="true">❀</span>
 
-.greeting-page {
-  position: relative;
-  isolation: isolate;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  min-height: 100vh;
-  min-height: 100svh;
-  padding: clamp(16px, 4vw, 56px);
-  overflow: hidden;
-  background-color: #f8d9a9;
-  background-image:
-    linear-gradient(rgba(255, 218, 164, 0.04), rgba(255, 234, 198, 0.04)),
-    url("/bijoya-wishes-/bijoya-background.webp");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
+    <article class="wish-card">
+      <div class="top-ornament" aria-hidden="true">
+        <span>—</span>
+        <span class="lotus">❀</span>
+        <span>—</span>
+      </div>
 
-.wish-card {
-  position: relative;
-  z-index: 2;
-  width: min(44%, 600px);
-  padding: clamp(24px, 3vw, 42px);
-  border: 1px solid var(--paper-edge);
-  border-radius: 46% 46% 22px 22px / 7% 7% 22px 22px;
-  background: var(--paper);
-  box-shadow:
-    0 16px 50px rgba(104, 42, 18, 0.12),
-    inset 0 0 0 5px rgba(255, 248, 225, 0.35);
-  backdrop-filter: blur(3px);
-  -webkit-backdrop-filter: blur(3px);
-  text-align: center;
-  animation: card-arrive 1s ease-out both;
-}
+      <p class="eyebrow">A little wish, made just for you</p>
 
-.wish-card::before {
-  content: "";
-  position: absolute;
-  inset: 8px;
-  border: 1px solid rgba(169, 75, 38, 0.18);
-  border-radius: inherit;
-  pointer-events: none;
-}
+      <div class="typed-message" aria-label="Shubho Bijoya greeting">
+        <p class="typed-line salutation">
+          <span class="typed-text"></span><span class="cursor hidden"></span>
+        </p>
 
-.top-ornament {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  color: var(--gold);
-  font-size: 18px;
-}
+        <p class="typed-line divider-line">
+          <span class="typed-text"></span><span class="cursor hidden"></span>
+        </p>
 
-.top-ornament .lotus {
-  color: var(--vermilion);
-  font-size: 30px;
-  line-height: 1;
-}
+        <p class="typed-line blessing">
+          <span class="typed-text"></span><span class="cursor hidden"></span>
+        </p>
 
-.eyebrow {
-  margin: 12px 0 20px;
-  color: #a35a37;
-  font-size: clamp(10px, 0.95vw, 13px);
-  letter-spacing: 0.16em;
-  line-height: 1.6;
-  text-transform: uppercase;
-}
+        <p class="typed-line blessing">
+          <span class="typed-text"></span><span class="cursor hidden"></span>
+        </p>
 
-.typed-message {
-  position: relative;
-  min-width: 0;
-}
+        <p class="typed-line signoff">
+          <span class="typed-text"></span><span class="cursor hidden"></span>
+        </p>
 
-.typed-line {
-  min-height: 1.4em;
-  margin: 0;
-}
+        <p class="typed-line signature">
+          <span class="typed-text"></span><span class="cursor hidden"></span>
+        </p>
 
-.typed-text {
-  white-space: pre-wrap;
-  overflow-wrap: anywhere;
-}
-
-.salutation {
-  margin-bottom: 8px;
-  color: var(--deep-red);
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(36px, 3.4vw, 48px);
-  font-weight: 700;
-  line-height: 1.15;
-}
-
-.divider-line {
-  margin: 10px 0 14px;
-  color: #be6d38;
-  font-size: 21px;
-  letter-spacing: 0.15em;
-}
-
-.blessing {
-  max-width: 34em;
-  margin: 8px auto;
-  font-size: clamp(15px, 1.35vw, 19px);
-  line-height: 1.6;
-}
-
-.signoff {
-  margin-top: 14px;
-  color: var(--vermilion);
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(29px, 2.5vw, 38px);
-  font-weight: 700;
-  line-height: 1.2;
-}
-
-.signature {
-  margin-top: 8px;
-  color: #a65a34;
-  font-size: clamp(14px, 1.2vw, 17px);
-  font-style: italic;
-  line-height: 1.5;
-}
-
-.instagram-line {
-  margin-top: 8px;
-  font-size: 15px;
-  font-style: italic;
-  line-height: 1.6;
-  white-space: nowrap;
-}
-
-.instagram-line .typed-text {
-  white-space: nowrap;
-  overflow-wrap: normal;
-  word-break: normal;
-}
-
-.instagram-line a {
-  position: relative;
-  z-index: 3;
-  display: inline-block;
-  max-width: 100%;
-  color: #a65a34;
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 4px;
-}
-
-.instagram-line a:hover {
-  color: var(--deep-red);
-}
-
-.cursor {
-  display: inline-block;
-  width: 1px;
-  height: 0.95em;
-  margin-left: 2px;
-  vertical-align: -0.06em;
-  background: currentColor;
-  animation: blink 0.8s steps(1) infinite;
-}
-
-.cursor.hidden {
-  display: none;
-}
-
-.petal-layer {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  overflow: hidden;
-  pointer-events: none;
-}
-
-.petal {
-  position: absolute;
-  top: -12vh;
-  display: block;
-  opacity: 0;
-  color: var(--petal-color, #be4228);
-  font-family: Georgia, serif;
-  line-height: 1;
-  text-shadow: 0 1px 2px rgba(120, 43, 23, 0.12);
-  animation: petal-fall var(--duration, 12s) linear var(--delay, 0s) infinite;
-  will-change: transform;
-}
-
-.corner-flower {
-  position: absolute;
-  z-index: 1;
-  color: rgba(157, 43, 32, 0.65);
-  pointer-events: none;
-  animation: gentle-float 5s ease-in-out infinite;
-}
-
-.flower-one {
-  top: 8%;
-  right: 49%;
-  font-size: clamp(16px, 2vw, 32px);
-}
-
-.flower-two {
-  bottom: 13%;
-  right: 45%;
-  font-size: clamp(24px, 2.4vw, 42px);
-  animation-delay: -2s;
-}
-
-.flower-three {
-  top: 18%;
-  right: 4%;
-  color: rgba(190, 121, 52, 0.7);
-  font-size: clamp(18px, 1.8vw, 32px);
-  animation-delay: -3.5s;
-}
-
-@keyframes blink {
-  50% { opacity: 0; }
-}
-
-@keyframes card-arrive {
-  from {
-    opacity: 0;
-    transform: translateY(15px) scale(0.99);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-@keyframes gentle-float {
-  0%, 100% { transform: translateY(0) rotate(-7deg); }
-  50% { transform: translateY(-12px) rotate(9deg); }
-}
-
-@keyframes petal-fall {
-  0% {
-    opacity: 0;
-    transform: translate3d(0, -4vh, 0) rotate(0deg);
-  }
-  8% { opacity: var(--petal-opacity, 0.65); }
-  50% {
-    transform: translate3d(var(--drift, 50px), 52vh, 0) rotate(190deg);
-  }
-  92% { opacity: var(--petal-opacity, 0.65); }
-  100% {
-    opacity: 0;
-    transform: translate3d(0, 112vh, 0) rotate(350deg);
-  }
-}
-
-@media (max-width: 900px) {
-  .greeting-page {
-    justify-content: center;
-    padding: 24px;
-    background-position: center;
-  }
-
-  .wish-card {
-    width: min(70%, 560px);
-  }
-}
-
-@media (max-width: 650px) {
-  .greeting-page {
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    min-height: 100svh;
-    padding: 16px 12px;
-    background-size: cover;
-    background-position: center;
-  }
-
-  .wish-card {
-    width: 100%;
-    max-width: 480px;
-    padding: 20px 16px;
-    border-radius: 28px;
-    background: rgba(255, 247, 224, 0.92);
-  }
-
-  .wish-card::before {
-    inset: 7px;
-    border-radius: 22px;
-  }
-
-  .top-ornament {
-    gap: 10px;
-  }
-
-  .top-ornament .lotus {
-    font-size: 27px;
-  }
-
-  .eyebrow {
-    margin: 10px 0 14px;
-    font-size: 10px;
-    letter-spacing: 0.13em;
-  }
-
-  .salutation {
-    font-size: clamp(34px, 9vw, 43px);
-  }
-
-  .divider-line {
-    margin: 8px 0 12px;
-    font-size: 19px;
-  }
-
-  .blessing {
-    max-width: 100%;
-    margin: 7px auto;
-    font-size: clamp(14px, 4vw, 17px);
-    line-height: 1.55;
-  }
-
-  .signoff {
-    margin-top: 12px;
-    font-size: clamp(28px, 7vw, 35px);
-  }
-
-  .signature {
-    margin-top: 6px;
-    font-size: 14px;
-  }
-
-  .instagram-line {
-    margin-top: 7px;
-    font-size: clamp(12px, 3.8vw, 15px);
-    white-space: nowrap;
-  }
-
-  .flower-one {
-    top: 39%;
-    right: 9%;
-  }
-
-  .flower-two {
-    top: 8%;
-    right: 9%;
-    bottom: auto;
-  }
-
-  .flower-three {
-    top: 29%;
-    right: 77%;
-  }
-}
-
-@media (max-width: 360px) {
-  .wish-card {
-    padding: 18px 12px;
-  }
-
-  .eyebrow {
-    letter-spacing: 0.09em;
-  }
-
-  .blessing {
-    font-size: 14px;
-  }
-
-  .instagram-line {
-    font-size: 12px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    scroll-behavior: auto !important;
-  }
-
-  .petal {
-    display: none;
-  }
-}
+        <p class="typed-line instagram-line">
+          <span class="typed-text"></span><span class="cursor hidden"></span>
+        </p>
+      </div>
+    </article>
+  </main>
+</body>
+</html>
