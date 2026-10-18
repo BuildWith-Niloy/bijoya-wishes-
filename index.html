@@ -3,8 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f7dfbd">
-  <title>A little note</title>
+  <meta name="theme-color" content="#8d201a">
+  <meta name="description" content="A little Shubho Bijoya wish, made just for you.">
+  <title>Shubho Bijoya — a little wish for you</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Lora:wght@400;500;600&display=swap" rel="stylesheet">
@@ -12,15 +13,35 @@
   <script src="script.js" defer></script>
 </head>
 <body>
-  <main class="page">
-    <div class="petals" id="petals" aria-hidden="true"></div>
-    <section class="note" aria-label="Personal note">
-      <div class="ornament" aria-hidden="true">— ❀ —</div>
-      <p class="dear" id="dear">Dear,</p>
-      <div class="rule" aria-hidden="true"></div>
-      <p class="signature">yours<br><span>Aditya Das Gupta</span></p>
-      <a class="instagram" href="https://www.instagram.com/____.dag.____/" target="_blank" rel="noopener noreferrer" aria-label="Open Instagram profile ____ dot dag dot ____">____.dag.____ ↗</a>
+  <main class="greeting-page">
+    <div class="petal-layer" id="petalLayer" aria-hidden="true"></div>
+
+    <section class="wish-card" aria-label="Personal Shubho Bijoya greeting">
+      <div class="top-ornament" aria-hidden="true"><span>—</span><span class="lotus">❀</span><span>—</span></div>
+      <p class="eyebrow">a little wish, made just for you</p>
+
+      <div class="typed-message" id="typedMessage" aria-live="polite" aria-label="Your Bijoya greeting">
+        <p class="typed-line salutation"><span class="typed-text"></span><span class="cursor" aria-hidden="true"></span></p>
+        <p class="typed-line divider-line"><span class="typed-text"></span><span class="cursor" aria-hidden="true"></span></p>
+        <p class="typed-line blessing"><span class="typed-text"></span><span class="cursor" aria-hidden="true"></span></p>
+        <p class="typed-line blessing"><span class="typed-text"></span><span class="cursor" aria-hidden="true"></span></p>
+        <p class="typed-line signoff"><span class="typed-text"></span><span class="cursor" aria-hidden="true"></span></p>
+        <p class="typed-line signature"><span class="typed-text"></span><span class="cursor" aria-hidden="true"></span></p>
+        <p class="typed-line instagram-handle"><a class="instagram-link" href="https://www.instagram.com/____.dag.____/?__pwa=1#" target="_blank" rel="noopener noreferrer"><span class="typed-text"></span></a><span class="cursor" aria-hidden="true"></span></p>
+      </div>
+
+      <div class="control-panel" id="controlPanel">
+        <label class="sr-only" for="recipientName">Recipient name</label>
+        <input id="recipientName" type="text" maxlength="60" autocomplete="off" placeholder="Recipient name" aria-label="Recipient name">
+        <button class="primary-button" id="createLink" type="button"><span aria-hidden="true">↗</span> Create Personal Link</button>
+        <button class="secondary-button" id="copyWish" type="button"><span aria-hidden="true">▢</span> Copy Wish</button>
+        <p class="status-message" id="statusMessage" role="status" aria-live="polite"></p>
+      </div>
+      <div class="bottom-ornament" aria-hidden="true"><span>✧</span> share a little joy <span>♡</span></div>
     </section>
+    <span class="corner-flower flower-one" aria-hidden="true">✿</span>
+    <span class="corner-flower flower-two" aria-hidden="true">❀</span>
+    <span class="corner-flower flower-three" aria-hidden="true">✽</span>
   </main>
 </body>
 </html>
