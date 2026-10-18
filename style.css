@@ -33,6 +33,7 @@ button {
   -webkit-tap-highlight-color: transparent;
 }
 
+/* Main page and background image */
 .greeting-page {
   position: relative;
   isolation: isolate;
@@ -41,8 +42,10 @@ button {
   justify-content: flex-end;
   min-height: 100vh;
   min-height: 100svh;
-  padding: clamp(1rem, 4vw, 4rem) clamp(1rem, 5.5vw, 6rem);
+  padding: clamp(1rem, 4vw, 4rem)
+    clamp(1rem, 5.5vw, 6rem);
   overflow: hidden;
+
   background-color: #f8d9a9;
   background-image:
     linear-gradient(
@@ -50,26 +53,33 @@ button {
       rgba(255, 218, 164, 0.02),
       rgba(255, 234, 198, 0.08)
     ),
-    url("./bijoya-background.webp");
+    url("/bijoya-wishes-/bijoya-background.webp");
+
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
 }
 
+/* Greeting card */
 .wish-card {
   position: relative;
   z-index: 2;
   width: min(47%, 650px);
   padding: clamp(1.4rem, 3vw, 2.65rem)
     clamp(1.2rem, 3.2vw, 3rem) 1.35rem;
+
   border: 1px solid var(--paper-edge);
   border-radius: 46% 46% 22px 22px / 7% 7% 22px 22px;
+
   background: var(--paper);
+
   box-shadow:
     0 16px 50px rgba(104, 42, 18, 0.11),
     inset 0 0 0 5px rgba(255, 248, 225, 0.24);
+
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(3px);
+
   text-align: center;
   animation: card-arrive 1.2s ease-out both;
 }
@@ -83,6 +93,7 @@ button {
   pointer-events: none;
 }
 
+/* Decorative heading */
 .top-ornament {
   display: flex;
   align-items: center;
@@ -107,6 +118,7 @@ button {
   text-transform: uppercase;
 }
 
+/* Typewriter message */
 .typed-message {
   position: relative;
   min-height: 220px;
@@ -161,6 +173,7 @@ button {
   font-style: italic;
 }
 
+/* Blinking typewriter cursor */
 .cursor {
   display: inline-block;
   width: 1px;
@@ -175,12 +188,13 @@ button {
   display: none;
 }
 
-/* Hide recipient controls and bottom footer */
+/* Hide recipient controls and footer */
 .control-panel,
 .bottom-ornament {
   display: none !important;
 }
 
+/* Links and status */
 .control-panel input,
 .control-panel button {
   font: inherit;
@@ -192,6 +206,7 @@ button {
   text-underline-offset: 3px;
 }
 
+/* Falling flower petals */
 .petal-layer {
   position: absolute;
   inset: 0;
@@ -209,11 +224,13 @@ button {
   font-family: Georgia, serif;
   line-height: 1;
   text-shadow: 0 1px 2px rgba(120, 43, 23, 0.12);
-  animation: petal-fall var(--duration, 12s) linear
+  animation:
+    petal-fall var(--duration, 12s) linear
     var(--delay, 0s) infinite;
   will-change: transform;
 }
 
+/* Floating decorative flowers */
 .corner-flower {
   position: absolute;
   z-index: 1;
@@ -243,6 +260,7 @@ button {
   animation-delay: -3.5s;
 }
 
+/* Accessible hidden text */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -255,6 +273,7 @@ button {
   border: 0;
 }
 
+/* Animations */
 @keyframes blink {
   50% {
     opacity: 0;
@@ -266,6 +285,7 @@ button {
     opacity: 0;
     transform: translateY(15px) scale(0.99);
   }
+
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
@@ -277,6 +297,7 @@ button {
   100% {
     transform: translateY(0) rotate(-7deg);
   }
+
   50% {
     transform: translateY(-12px) rotate(9deg);
   }
@@ -287,26 +308,32 @@ button {
     opacity: 0;
     transform: translate3d(0, -4vh, 0) rotate(0deg);
   }
+
   8% {
     opacity: var(--petal-opacity, 0.65);
   }
+
   50% {
-    transform: translate3d(var(--drift, 50px), 52vh, 0)
+    transform:
+      translate3d(var(--drift, 50px), 52vh, 0)
       rotate(190deg);
   }
+
   92% {
     opacity: var(--petal-opacity, 0.65);
   }
+
   100% {
     opacity: 0;
     transform: translate3d(0, 112vh, 0) rotate(350deg);
   }
 }
 
+/* Tablet screens */
 @media (max-width: 900px) {
   .greeting-page {
     padding: 1.5rem;
-    background-position: 42% center;
+    background-position: center center;
   }
 
   .wish-card {
@@ -314,12 +341,14 @@ button {
   }
 }
 
+/* Mobile screens */
 @media (max-width: 650px) {
   .greeting-page {
     align-items: center;
     justify-content: center;
     min-height: 100svh;
     padding: 1rem 0.8rem;
+
     background-size: cover;
     background-position: center center;
     background-color: #f9dcb0;
@@ -386,6 +415,7 @@ button {
   }
 }
 
+/* Respect reduced-motion settings */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
