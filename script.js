@@ -15,13 +15,12 @@
 
   function wishLines(name) {
     return [
-      "Dear,",
+      `Dear ${name},`,
       "— ❀ —",
       "May ma durga bless you with more than you deserve,",
       "better than you expected, and sooner than you imagined.",
-      "shubho bijoya",
-      "yours Aditya Das Gupta",
-      "____.dag.____"
+      `shubho bijoya ${name}`,
+      "your's outtaleague niki."
     ];
   }
 

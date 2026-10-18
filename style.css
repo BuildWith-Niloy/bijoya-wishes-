@@ -24,7 +24,7 @@ button { -webkit-tap-highlight-color: transparent; }
   padding: clamp(1rem, 4vw, 4rem) clamp(1rem, 5.5vw, 6rem);
   overflow: hidden;
   background-color: #f8d9a9;
-  background-image: linear-gradient(90deg, rgba(255, 218, 164, 0.02), rgba(255, 234, 198, 0.08)), url("assets/bijoya-background.webp");
+  background-image: linear-gradient(90deg, rgba(255, 218, 164, 0.02), rgba(255, 234, 198, 0.08)), url("./assets/bijoya-background.webp");
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -65,9 +65,6 @@ button { -webkit-tap-highlight-color: transparent; }
 .blessing { margin: 0.32rem auto; max-width: 33em; font-size: clamp(1rem, 1.5vw, 1.32rem); line-height: 1.65; }
 .signoff { margin-top: 1.15rem; color: var(--vermilion); font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(1.65rem, 2.55vw, 2.4rem); font-weight: 700; line-height: 1.08; }
 .signature { margin-top: 0.45rem; color: #a65a34; font-size: clamp(0.92rem, 1.2vw, 1.05rem); font-style: italic; }
-.instagram-handle { margin-top: 0.3rem; font-size: clamp(0.92rem, 1.2vw, 1.05rem); }
-.instagram-link { color: #762c21; text-underline-offset: 3px; text-decoration-thickness: 1px; }
-.instagram-link:hover { color: #9d2b20; }
 .cursor { display: inline-block; width: 1px; height: 0.95em; margin-left: 2px; vertical-align: -0.06em; background: currentColor; animation: blink 0.8s steps(1) infinite; }
 .cursor.hidden { display: none; }
 
@@ -144,12 +141,12 @@ button { -webkit-tap-highlight-color: transparent; }
 
 @media (max-width: 650px) {
   .greeting-page {
-    align-items: flex-end;
+    align-items: center;
     justify-content: center;
     min-height: 100svh;
-    padding: 44vh 0.8rem 1rem;
-    background-size: auto 67svh;
-    background-position: 29% top;
+    padding: 1rem 0.8rem;
+    background-size: cover;
+    background-position: center center;
     background-color: #f9dcb0;
   }
   .wish-card { width: 100%; max-width: 540px; padding: 1.15rem 1rem 1rem; border-radius: 26px; background: rgba(255, 247, 224, 0.91); }
@@ -172,3 +169,6 @@ button { -webkit-tap-highlight-color: transparent; }
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
   .petal { display: none; }
 }
+
+/* Hide the recipient/link controls and footer ornament as requested. */
+.control-panel, .bottom-ornament { display: none !important; }
