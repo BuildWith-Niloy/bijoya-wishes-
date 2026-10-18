@@ -4,7 +4,7 @@
   --deep-red: #762019;
   --ink: #762c21;
   --gold: #bd7934;
-  --paper: rgba(255, 247, 224, 0.76);
+  --paper: rgba(255, 247, 224, 0.84);
   --paper-edge: rgba(176, 93, 43, 0.35);
 }
 
@@ -33,7 +33,7 @@ button {
   -webkit-tap-highlight-color: transparent;
 }
 
-/* Main page and background image */
+/* Background image */
 .greeting-page {
   position: relative;
   isolation: isolate;
@@ -42,8 +42,7 @@ button {
   justify-content: flex-end;
   min-height: 100vh;
   min-height: 100svh;
-  padding: clamp(1rem, 4vw, 4rem)
-    clamp(1rem, 5.5vw, 6rem);
+  padding: clamp(1rem, 3vw, 3rem) clamp(1rem, 5vw, 5rem);
   overflow: hidden;
 
   background-color: #f8d9a9;
@@ -56,7 +55,7 @@ button {
     url("/bijoya-wishes-/bijoya-background.webp");
 
   background-size: cover;
-  background-position: center center;
+  background-position: center;
   background-repeat: no-repeat;
 }
 
@@ -64,9 +63,8 @@ button {
 .wish-card {
   position: relative;
   z-index: 2;
-  width: min(47%, 650px);
-  padding: clamp(1.4rem, 3vw, 2.65rem)
-    clamp(1.2rem, 3.2vw, 3rem) 1.35rem;
+  width: min(44%, 600px);
+  padding: clamp(1.2rem, 2.3vw, 2rem);
 
   border: 1px solid var(--paper-edge);
   border-radius: 46% 46% 22px 22px / 7% 7% 22px 22px;
@@ -93,7 +91,7 @@ button {
   pointer-events: none;
 }
 
-/* Decorative heading */
+/* Top decoration */
 .top-ornament {
   display: flex;
   align-items: center;
@@ -110,18 +108,20 @@ button {
   text-shadow: 0 1px rgba(255, 255, 255, 0.6);
 }
 
+/* Small heading */
 .eyebrow {
   margin: 0.7rem 0 1rem;
   color: #a35a37;
   font-size: clamp(0.62rem, 0.95vw, 0.8rem);
   letter-spacing: 0.19em;
+  line-height: 1.6;
   text-transform: uppercase;
 }
 
 /* Typewriter message */
 .typed-message {
   position: relative;
-  min-height: 220px;
+  min-height: 0;
 }
 
 .typed-line {
@@ -138,42 +138,63 @@ button {
   margin-bottom: 0.35rem;
   color: var(--deep-red);
   font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(2rem, 3.3vw, 3.3rem);
+  font-size: clamp(2rem, 3vw, 2.8rem);
   font-weight: 700;
-  line-height: 1.05;
+  line-height: 1.15;
 }
 
 .divider-line {
-  margin: 0.2rem 0 0.8rem;
+  margin: 0.35rem 0 0.7rem;
   color: #be6d38;
   font-size: 1.3rem;
   letter-spacing: 0.15em;
 }
 
 .blessing {
-  margin: 0.32rem auto;
   max-width: 33em;
-  font-size: clamp(1rem, 1.5vw, 1.32rem);
-  line-height: 1.65;
+  margin: 0.45rem auto;
+  font-size: clamp(1rem, 1.3vw, 1.2rem);
+  line-height: 1.5;
 }
 
 .signoff {
-  margin-top: 1.15rem;
+  margin-top: 0.8rem;
   color: var(--vermilion);
   font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(1.65rem, 2.55vw, 2.4rem);
+  font-size: clamp(1.6rem, 2.2vw, 2.1rem);
   font-weight: 700;
-  line-height: 1.08;
+  line-height: 1.15;
 }
 
 .signature {
-  margin-top: 0.45rem;
+  margin-top: 0.4rem;
   color: #a65a34;
   font-size: clamp(0.92rem, 1.2vw, 1.05rem);
   font-style: italic;
+  line-height: 1.5;
 }
 
-/* Blinking typewriter cursor */
+/* Instagram link */
+.instagram-line {
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+  font-style: italic;
+  line-height: 1.5;
+}
+
+.instagram-line a {
+  position: relative;
+  z-index: 3;
+  color: #a65a34;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.instagram-line a:hover {
+  color: var(--deep-red);
+}
+
+/* Blinking cursor */
 .cursor {
   display: inline-block;
   width: 1px;
@@ -188,25 +209,26 @@ button {
   display: none;
 }
 
-/* Hide recipient controls and footer */
+/* Hide controls and footer */
 .control-panel,
 .bottom-ornament {
   display: none !important;
 }
 
-/* Links and status */
-.control-panel input,
-.control-panel button {
-  font: inherit;
+/* Accessibility helper */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
-.status-message a {
-  color: inherit;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 3px;
-}
-
-/* Falling flower petals */
+/* Falling petals */
 .petal-layer {
   position: absolute;
   inset: 0;
@@ -224,13 +246,15 @@ button {
   font-family: Georgia, serif;
   line-height: 1;
   text-shadow: 0 1px 2px rgba(120, 43, 23, 0.12);
+
   animation:
     petal-fall var(--duration, 12s) linear
     var(--delay, 0s) infinite;
+
   will-change: transform;
 }
 
-/* Floating decorative flowers */
+/* Floating flowers */
 .corner-flower {
   position: absolute;
   z-index: 1;
@@ -258,19 +282,6 @@ button {
   color: rgba(190, 121, 52, 0.7);
   font-size: clamp(1.1rem, 1.8vw, 2rem);
   animation-delay: -3.5s;
-}
-
-/* Accessible hidden text */
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
 }
 
 /* Animations */
@@ -314,8 +325,7 @@ button {
   }
 
   50% {
-    transform:
-      translate3d(var(--drift, 50px), 52vh, 0)
+    transform: translate3d(var(--drift, 50px), 52vh, 0)
       rotate(190deg);
   }
 
@@ -329,11 +339,11 @@ button {
   }
 }
 
-/* Tablet screens */
+/* Tablet */
 @media (max-width: 900px) {
   .greeting-page {
     padding: 1.5rem;
-    background-position: center center;
+    background-position: center;
   }
 
   .wish-card {
@@ -341,25 +351,24 @@ button {
   }
 }
 
-/* Mobile screens */
+/* Mobile */
 @media (max-width: 650px) {
   .greeting-page {
     align-items: center;
     justify-content: center;
     min-height: 100svh;
     padding: 1rem 0.8rem;
-
     background-size: cover;
-    background-position: center center;
+    background-position: center;
     background-color: #f9dcb0;
   }
 
   .wish-card {
     width: 100%;
     max-width: 540px;
-    padding: 1.15rem 1rem 1rem;
+    padding: 1.2rem 1rem;
     border-radius: 26px;
-    background: rgba(255, 247, 224, 0.91);
+    background: rgba(255, 247, 224, 0.93);
   }
 
   .wish-card::before {
@@ -377,7 +386,7 @@ button {
   }
 
   .typed-message {
-    min-height: 205px;
+    min-height: 0;
   }
 
   .salutation {
@@ -398,15 +407,19 @@ button {
     font-size: 0.9rem;
   }
 
+  .instagram-line {
+    font-size: 0.9rem;
+  }
+
   .flower-one {
     top: 39%;
     right: 9%;
   }
 
   .flower-two {
-    bottom: auto;
     top: 8%;
     right: 9%;
+    bottom: auto;
   }
 
   .flower-three {
@@ -415,7 +428,7 @@ button {
   }
 }
 
-/* Respect reduced-motion settings */
+/* Respect reduced-motion preferences */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -429,49 +442,3 @@ button {
     display: none;
   }
 }
-
-/* Final greeting layout adjustments */
-.greeting-page {
-  justify-content: flex-end;
-  padding: clamp(1rem, 3vw, 3rem) clamp(1rem, 5vw, 5rem);
-}
-
-.wish-card {
-  width: min(44%, 600px);
-  padding: clamp(1.2rem, 2.3vw, 2rem);
-}
-
-.typed-message {
-  min-height: 0;
-}
-
-.typed-line {
-  min-height: 1.4em;
-}
-
-.salutation {
-  font-size: clamp(2rem, 3vw, 2.8rem);
-}
-
-.blessing {
-  font-size: clamp(1rem, 1.3vw, 1.2rem);
-  line-height: 1.5;
-}
-
-.signoff {
-  margin-top: 0.8rem;
-  font-size: clamp(1.6rem, 2.2vw, 2.1rem);
-}
-
-.signature {
-  margin-top: 0.4rem;
-}
-
-@media (max-width: 650px) {
-  .wish-card {
-    width: 100%;
-    max-width: 540px;
-    padding: 1.2rem 1rem;
-  }
-}
-
