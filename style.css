@@ -1,4 +1,3 @@
-
 :root {
   --vermilion: #9d2b20;
   --deep-red: #762019;
@@ -299,7 +298,7 @@ body {
     min-height: 100svh;
     padding: 16px 12px 20px;
     background-size: cover;
-    background-position: center;
+    background-position: center top;
     background-color: #f9dcb0;
   }
 
