@@ -290,15 +290,17 @@ body {
   }
 }
 
+/* Mobile positioning adjusted to match your reference */
 @media (max-width: 650px) {
   .greeting-page {
-    align-items: center;
+    align-items: flex-end;
     justify-content: center;
     min-height: 100vh;
     min-height: 100svh;
-    padding: 16px 12px;
+    padding: 16px 12px 20px;
     background-size: cover;
     background-position: center;
+    background-color: #f9dcb0;
   }
 
   .wish-card {
@@ -406,7 +408,3 @@ body {
     display: none;
   }
 }
-
-
-
-
